@@ -32,8 +32,8 @@ const App = () => {
     setErrorMessage("");
     try {
       const endpoint = query
-          ? `${API_BASE_URL}/search/movie?query=${encodeURIComponent(query)}&api_key=${API_KEY}`
-          : `${API_BASE_URL}/discover/movie?sort_by=popularity.desc&api_key=${API_KEY}`;
+        ? `${API_BASE_URL}/search/movie?query=${encodeURIComponent(query)}&api_key=${API_KEY}`
+        : `${API_BASE_URL}/discover/movie?sort_by=popularity.desc&api_key=${API_KEY}`;
 
       const response = await fetch(endpoint, API_OPTIONS);
 
@@ -96,7 +96,10 @@ const App = () => {
               {trendingMovies.map((movie, index) => (
                 <li key={movie.$id}>
                   <p>{index + 1}</p>
-                  <img src={`https://image.tmdb.org/t/p/w500${movie.poster_url || movie.poster_path}`} alt={movie.title} />
+                  <img
+                    src={`https://image.tmdb.org/t/p/w500${movie.poster_url || movie.poster_path}`}
+                    alt={movie.title}
+                  />
                 </li>
               ))}
             </ul>
