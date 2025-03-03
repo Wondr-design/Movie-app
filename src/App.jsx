@@ -1,4 +1,4 @@
-import { useDebounce, useIntersection } from "react-use";
+import { useDebounce } from "react-use";
 import Search from "./components/Search.jsx";
 import { useEffect, useState } from "react";
 import Spinner from "@/components/Spinner.jsx";
