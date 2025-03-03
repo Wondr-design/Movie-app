@@ -54,8 +54,8 @@ const App = () => {
       }
 
       // console.log(data);
-    } catch (error) {
-      console.error(`Error in fetching movies${error}`);
+    } catch (errorr) {
+      console.log(`Error in fetching movies${errorr}`);
     } finally {
       setIsLoading(false);
     }
