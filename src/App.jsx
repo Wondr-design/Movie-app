@@ -32,8 +32,9 @@ const App = () => {
     setErrorMessage("");
     try {
       const endpoint = query
-        ? `${API_BASE_URL}/search/movie?query=${encodeURI(query)}`
-        : `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;
+          ? `${API_BASE_URL}/search/movie?query=${encodeURIComponent(query)}&api_key=${API_KEY}`
+          : `${API_BASE_URL}/discover/movie?sort_by=popularity.desc&api_key=${API_KEY}`;
+
       const response = await fetch(endpoint, API_OPTIONS);
 
       if (!response.ok) {
@@ -81,7 +82,7 @@ const App = () => {
 
       <div className="wrapper">
         <header>
-          <img src="hero-img.png" alt="Hero Banner" />
+          {/*<img src="hero-img.png" alt="Hero Banner" />*/}
           <h1>
             Find <span className="text-gradient">Movies</span> you enjoy without
             the hassle
@@ -95,7 +96,7 @@ const App = () => {
               {trendingMovies.map((movie, index) => (
                 <li key={movie.$id}>
                   <p>{index + 1}</p>
-                  <img src={movie.poster_url} alt={movie.title} />
+                  <img src={`https://image.tmdb.org/t/p/w500${movie.poster_url || movie.poster_path}`} alt={movie.title} />
                 </li>
               ))}
             </ul>
